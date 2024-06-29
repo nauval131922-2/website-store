@@ -7,8 +7,8 @@ import Navbar from "@/components/navbar";
 const font = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Toko Online",
-  description: "Toko Online",
+  title: "Store",
+  description: "Store",
 };
 
 export default function RootLayout({
