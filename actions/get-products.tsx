@@ -1,11 +1,26 @@
-import { Category } from "@/types";
+import { Product } from "@/types";
 
-const URL = `${process.env.PUBLIC_API_URL}/categories`;
+import qs from "query-string"
 
-const getCategories =async (): Promise<Category[]> => {
-    const res = await fetch(URL);
+const URL = `${process.env.PUBLIC_API_URL}/products`;
+
+interface Query {
+    categoryId?: string
+    isFeatured?: boolean
+}
+
+const getProducts =async (query: Query): Promise<Product[]> => {
+    const url = qs.stringifyUrl({
+        url: URL,
+        query: {
+            categoryId: query.categoryId,
+            isFeatured: query.isFeatured
+        }
+    })
+
+    const res = await fetch(url);
 
     return res.json();
 }
 
-export default getCategories
+export default getProducts
